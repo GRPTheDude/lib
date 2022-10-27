@@ -1065,7 +1065,7 @@ function Tabs:Tab(Title)
    TabTitle.TextSize = 17.000
    TabTitle.TextXAlignment = Enum.TextXAlignment.Left
    
-   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(236, 136, 36)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
+   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(55, 35, 132)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(83, 48, 233))}
    TabGradient.Name = "TabGradient"
    TabGradient.Parent = Tab
 
