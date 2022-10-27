@@ -804,10 +804,10 @@ local UIS = game:GetService('UserInputService')
             spawn(function()
                local Circle = Instance.new("ImageLabel")
                Circle.Parent = Object
-               Circle.BackgroundColor3 = Color3.fromRGBrbxassetid://266543268(255, 255, 255)
+               Circle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
                Circle.BackgroundTransparency = 1.000
                Circle.ZIndex = 10
-               Circle.Image = ""
+               Circle.Image = "rbxassetid://266543268"
                Circle.ImageColor3 = Color3.fromRGB(210,210,210)
                Circle.ImageTransparency = 0.8
                Circle.Position = UDim2.new(0, Mouse.X - Circle.AbsolutePosition.X, 0, Mouse.Y - Circle.AbsolutePosition.Y)
@@ -1065,7 +1065,7 @@ function Tabs:Tab(Title)
    TabTitle.TextSize = 17.000
    TabTitle.TextXAlignment = Enum.TextXAlignment.Left
    
-   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(55, 35, 132)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(83, 48, 233))}
+   TabGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(236, 136, 36)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
    TabGradient.Name = "TabGradient"
    TabGradient.Parent = Tab
 
@@ -1197,7 +1197,7 @@ MainFrameSearchBox.Changed:Connect(UpdateResoults)
    local DeleteButton = Instance.new("TextButton")
    
 
-   local MainFolder = "GRP HUB"
+   local MainFolder = "Project Meow"
    local CodeStorage = MainFolder.."/".."CodeStorage"
    local FilesStorage = MainFolder.."/".."FilesStorage"
    local ConfigsStorage = MainFolder.."/".."ConfigsStorage"
