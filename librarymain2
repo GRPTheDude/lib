@@ -1151,6 +1151,463 @@ end
 
 MainFrameSearchBox.Changed:Connect(UpdateResoults)
 
+
+   local InternalUIFrameCorner = Instance.new("UICorner")
+   local FilesFrame = Instance.new("Frame")
+   local FilesCorner = Instance.new("UICorner")
+   local FilesHolder = Instance.new("ScrollingFrame")
+   local FilesHolderLayout = Instance.new("UIListLayout")
+   local SavedFiles = Instance.new("TextButton")
+   local FilesHolderPadding = Instance.new("UIPadding")
+   local CodingFrame = Instance.new("Frame")
+   local CodingFrameCorner = Instance.new("UICorner")
+   local CodingFrameHolder = Instance.new("ScrollingFrame")
+   local CodingFrameHolderLayout = Instance.new("UIListLayout")
+   local CodingBox = Instance.new("TextBox")
+   local CodingBoxPadding = Instance.new("UIPadding")
+   local ExecuteButton = Instance.new("TextButton")
+   local ExecuteButtonCorner = Instance.new("UICorner")
+   local SaveFileButton = Instance.new("TextButton")
+   local SaveFileButtonCorner = Instance.new("UICorner")
+   local ClearButton = Instance.new("TextButton")
+   local ClearButtonCorner = Instance.new("UICorner")
+   local RefreshButton = Instance.new("TextButton")
+   local RefreshButtonCorner = Instance.new("UICorner")
+   local CloseButton = Instance.new("TextButton")
+   local CloseButtonCorner = Instance.new("UICorner")
+
+   local SaveFileCheckFrame = Instance.new("Frame")
+   local SaveFileCheckFrameCorner = Instance.new("UICorner")
+   local OptionsFrame = Instance.new("Frame")
+   local OptionsFrameCorner = Instance.new("UICorner")
+   local YESButton = Instance.new("TextButton")
+   local YESButtonCorner = Instance.new("UICorner")
+   local NOButton = Instance.new("TextButton")
+   local NOButtonCorner = Instance.new("UICorner")
+   local CreateButton = Instance.new("TextButton")
+   local CreateButtonCorner = Instance.new("UICorner")
+   local OptionsFrameTitle = Instance.new("TextLabel")
+   local OptionsFrameDesc = Instance.new("TextLabel")
+   local FileCreateBox = Instance.new("TextBox")
+   local FileCreateBoxCorner = Instance.new("UICorner")
+
+   local SavedFileOptionsFrame = Instance.new("Frame")
+   local SavedFileOptionsFrameCorner = Instance.new("UICorner")
+   local SavedFileOptionsFrameLayout = Instance.new("UIListLayout")
+   local DeleteButton = Instance.new("TextButton")
+   
+
+   local MainFolder = "Project Meow"
+   local CodeStorage = MainFolder.."/".."CodeStorage"
+   local FilesStorage = MainFolder.."/".."FilesStorage"
+   local ConfigsStorage = MainFolder.."/".."ConfigsStorage"
+
+   local ExecuteFile = CodeStorage.."/".."Exec.lua"
+   local SaveProgress = CodeStorage.."/".."Saved.lua"
+
+   function addluafolder()
+      if isfolder(MainFolder) then
+
+      else
+         makefolder(MainFolder)
+      end
+   end
+
+   function addluastorage()
+      if isfolder(CodeStorage) then
+
+      else
+         makefolder(CodeStorage)
+      end
+   end
+
+   function addFilesStorage()
+      if isfolder(FilesStorage) then
+
+      else
+         makefolder(FilesStorage)
+      end
+   end
+
+   function addConfigsStorage()
+      if isfolder(ConfigsStorage) then
+
+      else
+         makefolder(ConfigsStorage)
+      end
+   end
+
+   addluafolder()
+   addluastorage()
+   addFilesStorage()
+   addConfigsStorage()
+
+   function AddFileToStorage(name)
+      writefile(FilesStorage.."/"..name..".lua", CodingBox.Text)
+      local stringi = FilesStorage.."/"..name..".lua"
+
+          local NewFileClone = game:GetService("CoreGui").woof.InternalUIFrame.FilesFrame.FilesHolder.SavedFiles:Clone()
+          NewFileClone.Parent = FilesHolder
+          NewFileClone.Text = string.gsub(stringi, "Project Meow/FilesStorage", "\n")
+          NewFileClone.Name = string.gsub(stringi, "Project Meow/FilesStorage", "\n")
+          NewFileClone.Visible = true
+          NewFileClone.TextXAlignment = Enum.TextXAlignment.Left
+   end
+
+   function RefreshFilesStorage()
+      for i,v in pairs(FilesHolder:GetChildren()) do
+         if v.ClassName == "TextButton" and v.Name ~= "SavedFiles" then
+             v:Destroy()
+         end
+     end
+     local listF = listfiles(FilesStorage)
+     for i,v in pairs(listF) do
+      local NewFileClone = game:GetService("CoreGui").woof.InternalUIFrame.FilesFrame.FilesHolder.SavedFiles:Clone()
+      NewFileClone.Parent = FilesHolder
+      NewFileClone.Text = string.gsub(v, "Project Meow/FilesStorage", "\n")
+      NewFileClone.Name = v
+      NewFileClone.Visible = true
+      NewFileClone.TextXAlignment = Enum.TextXAlignment.Left
+     end
+     for i,v in pairs(FilesHolder:GetChildren()) do
+      if v.ClassName == "TextButton" then
+         v.MouseButton1Click:Connect(function()
+            CodingBox.Text = ""
+            CodingBox.Text = readfile(v.Name)
+          end)
+      end
+  end
+   end
+
+   function addluaexecutefile()
+      writefile(ExecuteFile, CodingBox.Text)
+   end
+
+   function savefileprogress()
+      writefile(SaveProgress, CodingBox.Text)
+   end
+
+   
+   InternalUIFrame.Name = "InternalUIFrame"
+   InternalUIFrame.Parent = woof
+   InternalUIFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+   InternalUIFrame.Position = UDim2.new(0.153254017, 0, 0.253772289, 0)
+   InternalUIFrame.Size = UDim2.new(0, 594, 0, 339)
+   InternalUIFrame.Visible = false
+
+
+   
+   InternalUIFrameCorner.CornerRadius = UDim.new(0, 5)
+   InternalUIFrameCorner.Name = "InternalUIFrameCorner"
+   InternalUIFrameCorner.Parent = InternalUIFrame
+   
+   FilesFrame.Name = "FilesFrame"
+   FilesFrame.Parent = InternalUIFrame
+   FilesFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+   FilesFrame.Position = UDim2.new(0.720538735, 0, 0, 0)
+   FilesFrame.Size = UDim2.new(0, 166, 0, 297)
+   
+   FilesCorner.CornerRadius = UDim.new(0, 5)
+   FilesCorner.Name = "FilesCorner"
+   FilesCorner.Parent = FilesFrame
+   
+   FilesHolder.Name = "FilesHolder"
+   FilesHolder.Parent = FilesFrame
+   FilesHolder.Active = true
+   FilesHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+   FilesHolder.BackgroundTransparency = 1.000
+   FilesHolder.BorderSizePixel = 0
+   FilesHolder.Size = UDim2.new(0, 160, 0, 297)
+   FilesHolder.ScrollBarThickness = 6
+   
+   FilesHolderLayout.Name = "FilesHolderLayout"
+   FilesHolderLayout.Parent = FilesHolder
+   FilesHolderLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+   FilesHolderLayout.SortOrder = Enum.SortOrder.LayoutOrder
+   FilesHolderLayout.Padding = UDim.new(0, 5)
+   
+   SavedFiles.Name = "SavedFiles"
+   SavedFiles.Parent = FilesHolder
+   SavedFiles.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+   SavedFiles.BackgroundTransparency = 1.000
+   SavedFiles.Position = UDim2.new(0.0555793755, 0, 0, 0)
+   SavedFiles.Size = UDim2.new(0, 149, 0, 22)
+   SavedFiles.Font = Enum.Font.Gotham
+   SavedFiles.Text = "File"
+   SavedFiles.TextColor3 = Color3.fromRGB(255, 255, 255)
+   SavedFiles.TextSize = 14.000
+   SavedFiles.TextXAlignment = Enum.TextXAlignment.Left
+   SavedFiles.Visible = false
+   
+   FilesHolderPadding.Name = "FilesHolderPadding"
+   FilesHolderPadding.Parent = FilesHolder
+   FilesHolderPadding.PaddingBottom = UDim.new(0, 5)
+   FilesHolderPadding.PaddingTop = UDim.new(0, 5)
+   
+   CodingFrame.Name = "CodingFrame"
+   CodingFrame.Parent = InternalUIFrame
+   CodingFrame.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+   CodingFrame.Position = UDim2.new(0.0134680131, 0, 0.029498525, 0)
+   CodingFrame.Size = UDim2.new(0, 409, 0, 287)
+   
+   CodingFrameCorner.CornerRadius = UDim.new(0, 3)
+   CodingFrameCorner.Name = "CodingFrameCorner"
+   CodingFrameCorner.Parent = CodingFrame
+   
+   CodingFrameHolder.Name = "CodingFrameHolder"
+   CodingFrameHolder.Parent = CodingFrame
+   CodingFrameHolder.Active = true
+   CodingFrameHolder.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+   CodingFrameHolder.BackgroundTransparency = 1.000
+   CodingFrameHolder.BorderSizePixel = 0
+   CodingFrameHolder.Position = UDim2.new(0, 0, 0.0140129915, 0)
+   CodingFrameHolder.Size = UDim2.new(0, 401, 0, 282)
+   CodingFrameHolder.ScrollBarThickness = 7
+   
+   CodingFrameHolderLayout.Name = "CodingFrameHolderLayout"
+   CodingFrameHolderLayout.Parent = CodingFrameHolder
+   CodingFrameHolderLayout.SortOrder = Enum.SortOrder.LayoutOrder
+   
+   CodingBox.Name = "CodingBox"
+   CodingBox.Parent = CodingFrameHolder
+   CodingBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+   CodingBox.BackgroundTransparency = 1.000
+   CodingBox.Size = UDim2.new(0, 409, 0, 276)
+   CodingBox.ClearTextOnFocus = false
+   CodingBox.Font = Enum.Font.Gotham
+   CodingBox.MultiLine = true
+   CodingBox.Text = ""
+   CodingBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+   CodingBox.TextSize = 14.000
+   CodingBox.TextXAlignment = Enum.TextXAlignment.Left
+   CodingBox.TextYAlignment = Enum.TextYAlignment.Top
+
+   function checkifsavefileexists()
+      if isfile(SaveProgress) then
+
+      else
+          writefile(SaveProgress, "")
+      end
+  end
+
+  checkifsavefileexists()
+
+   local Players = game:GetService("Players")
+   Players.PlayerRemoving:Connect(function(player)
+      if player.UserId == Players.LocalPlayer.UserId then
+          writefile(SaveProgress, CodingBox.Text)
+      end
+  end)
+
+  function WhenExecuted()
+   if isfile(SaveProgress) then
+      CodingBox.Text = readfile(SaveProgress)
+   end
+end
+
+WhenExecuted()
+   
+   CodingBoxPadding.Name = "CodingBoxPadding"
+   CodingBoxPadding.Parent = CodingBox
+   CodingBoxPadding.PaddingLeft = UDim.new(0, 5)
+   CodingBoxPadding.PaddingTop = UDim.new(0, 5)
+   
+   ExecuteButton.Name = "ExecuteButton"
+   ExecuteButton.Parent = InternalUIFrame
+   ExecuteButton.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+   ExecuteButton.Position = UDim2.new(0.0280000009, 0, 0.899999976, 0)
+   ExecuteButton.Size = UDim2.new(0, 92, 0, 28)
+   ExecuteButton.AutoButtonColor = false
+   ExecuteButton.Font = Enum.Font.Gotham
+   ExecuteButton.Text = "Execute"
+   ExecuteButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   ExecuteButton.TextSize = 14.000
+
+   local webhookcheck =
+   is_sirhurt_closure and "s" or pebc_execute and "p" and "s" or
+   secure_load and "s" or
+   KRNL_LOADED and "k" or
+   SONA_LOADED and "s" or
+   "e"
+
+   ExecuteButton.MouseButton1Click:Connect(function()
+      ExecuteButton.TextSize = 0
+      TweenService:Create(
+          ExecuteButton,
+          TweenInfo.new(.3, Enum.EasingStyle.Quad),
+          {TextSize = 14}
+      ):Play()
+      if webhookcheck then
+          pcall(dofile(ExecuteFile))
+      else
+          loadfile(ExecuteFile)()
+      end
+   end)
+
+   spawn(function()
+      while task.wait() do
+         pcall(function()
+            addluaexecutefile()
+            writefile(SaveProgress, CodingBox.Text)
+         end)
+      end
+   end)
+   
+   ExecuteButtonCorner.CornerRadius = UDim.new(0, 3)
+   ExecuteButtonCorner.Name = "ExecuteButtonCorner"
+   ExecuteButtonCorner.Parent = ExecuteButton
+   
+   CloseButton.Name = "CloseButton"
+   CloseButton.Parent = InternalUIFrame
+   CloseButton.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+   CloseButton.Position = UDim2.new(0.59870708, 0, 0.900000036, 0)
+   CloseButton.Size = UDim2.new(0, 84, 0, 28)
+   CloseButton.AutoButtonColor = false
+   CloseButton.Font = Enum.Font.Gotham
+   CloseButton.Text = "Close UI"
+   CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   CloseButton.TextSize = 14.000
+   
+   CloseButtonCorner.CornerRadius = UDim.new(0, 3)
+   CloseButtonCorner.Name = "CloseButtonCorner"
+   CloseButtonCorner.Parent = CloseButton
+
+   CloseButton.MouseButton1Click:Connect(function()
+      CloseButton.TextSize = 0
+      TweenService:Create(CloseButton,TweenInfo.new(.3, Enum.EasingStyle.Quad),{TextSize = 14}):Play()
+      InternalUIFrame.Visible = false
+   end)
+   
+   SaveFileButton.Name = "SaveFileButton"
+   SaveFileButton.Parent = InternalUIFrame
+   SaveFileButton.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+   SaveFileButton.Position = UDim2.new(0.226653188, 0, 0.899999976, 0)
+   SaveFileButton.Size = UDim2.new(0, 92, 0, 28)
+   SaveFileButton.AutoButtonColor = false
+   SaveFileButton.Font = Enum.Font.Gotham
+   SaveFileButton.Text = "Save File"
+   SaveFileButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   SaveFileButton.TextSize = 14.000
+
+   SaveFileButton.MouseButton1Click:Connect(function()
+      SaveFileButton.TextSize = 0
+      TweenService:Create(SaveFileButton,TweenInfo.new(.3, Enum.EasingStyle.Quad),{TextSize = 14}):Play()
+      SaveFileCheckFrame.Visible = true
+   end)
+   
+   SaveFileButtonCorner.CornerRadius = UDim.new(0, 3)
+   SaveFileButtonCorner.Name = "SaveFileButtonCorner"
+   SaveFileButtonCorner.Parent = SaveFileButton
+   
+   ClearButton.Name = "ClearButton"
+   ClearButton.Parent = InternalUIFrame
+   ClearButton.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+   ClearButton.Position = UDim2.new(0.421939373, 0, 0.899999976, 0)
+   ClearButton.Size = UDim2.new(0, 92, 0, 28)
+   ClearButton.AutoButtonColor = false
+   ClearButton.Font = Enum.Font.Gotham
+   ClearButton.Text = "Clear"
+   ClearButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   ClearButton.TextSize = 14.000
+
+   ClearButton.MouseButton1Click:Connect(function()
+      ClearButton.TextSize = 0
+      TweenService:Create(ClearButton,TweenInfo.new(.3, Enum.EasingStyle.Quad),{TextSize = 14}):Play()
+      CodingBox.Text = ""
+   end)
+   
+   ClearButtonCorner.CornerRadius = UDim.new(0, 3)
+   ClearButtonCorner.Name = "ClearButtonCorner"
+   ClearButtonCorner.Parent = ClearButton
+   
+   RefreshButton.Name = "RefreshButton"
+   RefreshButton.Parent = InternalUIFrame
+   RefreshButton.BackgroundColor3 = Color3.fromRGB(36, 36, 36)
+   RefreshButton.Position = UDim2.new(0.773791194, 0, 0.899999976, 0)
+   RefreshButton.Size = UDim2.new(0, 92, 0, 28)
+   RefreshButton.AutoButtonColor = false
+   RefreshButton.Font = Enum.Font.Gotham
+   RefreshButton.Text = "Refresh"
+   RefreshButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   RefreshButton.TextSize = 14.000
+
+   RefreshButton.MouseButton1Click:Connect(function()
+      RefreshButton.TextSize = 0
+      TweenService:Create(RefreshButton,TweenInfo.new(.3, Enum.EasingStyle.Quad),{TextSize = 14}):Play()
+      RefreshFilesStorage()
+   end)
+   
+   RefreshButtonCorner.CornerRadius = UDim.new(0, 3)
+   RefreshButtonCorner.Name = "RefreshButtonCorner"
+   RefreshButtonCorner.Parent = RefreshButton
+
+
+
+
+
+   SaveFileCheckFrame.Name = "SaveFileCheckFrame"
+   SaveFileCheckFrame.Parent = InternalUIFrame
+   SaveFileCheckFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+   SaveFileCheckFrame.Size = UDim2.new(0, 594, 0, 339)
+   SaveFileCheckFrame.Visible = false
+   
+   SaveFileCheckFrameCorner.CornerRadius = UDim.new(0, 5)
+   SaveFileCheckFrameCorner.Name = "SaveFileCheckFrameCorner"
+   SaveFileCheckFrameCorner.Parent = SaveFileCheckFrame
+   
+   OptionsFrame.Name = "OptionsFrame"
+   OptionsFrame.Parent = SaveFileCheckFrame
+   OptionsFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
+   OptionsFrame.Position = UDim2.new(0.151515156, 0, 0.147492617, 0)
+   OptionsFrame.Size = UDim2.new(0, 399, 0, 239)
+   
+   OptionsFrameCorner.CornerRadius = UDim.new(0, 3)
+   OptionsFrameCorner.Name = "OptionsFrameCorner"
+   OptionsFrameCorner.Parent = OptionsFrame
+   
+   YESButton.Name = "YESButton"
+   YESButton.Parent = OptionsFrame
+   YESButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+   YESButton.Position = UDim2.new(0.110275686, 0, 0.836820066, 0)
+   YESButton.Size = UDim2.new(0, 91, 0, 30)
+   YESButton.Font = Enum.Font.Gotham
+   YESButton.Text = "Yes"
+   YESButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   YESButton.TextSize = 14.000
+
+   YESButton.MouseButton1Click:Connect(function()
+      YESButton.TextSize = 0
+      TweenService:Create(YESButton,TweenInfo.new(.3, Enum.EasingStyle.Quad),{TextSize = 14}):Play()
+      CreateButton.Visible = true
+      FileCreateBox.Visible = true
+   end)
+   
+   YESButtonCorner.CornerRadius = UDim.new(0, 4)
+   YESButtonCorner.Name = "YESButtonCorner"
+   YESButtonCorner.Parent = YESButton
+   
+   NOButton.Name = "NOButton"
+   NOButton.Parent = OptionsFrame
+   NOButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
+   NOButton.Position = UDim2.new(0.656641662, 0, 0.836820066, 0)
+   NOButton.Size = UDim2.new(0, 91, 0, 30)
+   NOButton.Font = Enum.Font.Gotham
+   NOButton.Text = "No"
+   NOButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+   NOButton.TextSize = 14.000
+
+   NOButton.MouseButton1Click:Connect(function()
+      NOButton.TextSize = 0
+      TweenService:Create(NOButton,TweenInfo.new(.3, Enum.EasingStyle.Quad),{TextSize = 14}):Play()
+      CreateButton.Visible = false
+      FileCreateBox.Visible = false
+      SaveFileCheckFrame.Visible = false
+   end)
+   
+   NOButtonCorner.CornerRadius = UDim.new(0, 4)
+   NOButtonCorner.Name = "NOButtonCorner"
+   NOButtonCorner.Parent = NOButton
+   
    CreateButton.Name = "CreateButton"
    CreateButton.Parent = OptionsFrame
    CreateButton.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
