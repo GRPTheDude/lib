@@ -340,6 +340,34 @@ function Mainholder:Window(hubname, gamename)
    SettingsFrameCorner.Parent = SettingsFrame
 
 
+   Discord.Name = "Discord"
+   Discord.Parent = SettingsFrame
+   Discord.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+   Discord.BackgroundTransparency = 1.000
+   Discord.Position = UDim2.new(-3.4289414e-07, 0, 0, 0)
+   Discord.Size = UDim2.new(1.00000072, 0, 0, 20)
+   Discord.Font = Enum.Font.Gotham
+   Discord.Text = "Internal UI"
+   Discord.TextColor3 = Color3.fromRGB(255, 255, 255)
+   Discord.TextSize = 13.000
+   Discord.TextTransparency = 0.400
+   Discord.TextXAlignment = Enum.TextXAlignment.Left
+   Discord.Visible = false
+   
+   DiscordCorner.CornerRadius = UDim.new(0, 6)
+   DiscordCorner.Name = "DiscordCorner"
+   DiscordCorner.Parent = Discord
+   
+   DiscordPadding.Name = "DiscordPadding"
+   DiscordPadding.Parent = Discord
+   DiscordPadding.PaddingLeft = UDim.new(0, 10)
+
+   Discord.MouseButton1Click:Connect(function()
+      Discord.TextSize = 10
+      TweenService:Create(Discord,TweenInfo.new(.1, Enum.EasingStyle.Quad),{TextSize = 13.000}):Play()
+      InternalUIFrame.Visible = true
+   end)
+
 
    MenuBtn.Name = "MenuBtn"
    MenuBtn.Parent = SettingsFrame
