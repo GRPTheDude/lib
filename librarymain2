@@ -196,7 +196,6 @@ function Mainholder:Window(hubname, gamename)
    local MainSettingsTitle = Instance.new("TextLabel")
    local MainSettingsFrameClose = Instance.new("ImageButton")
 
-   local InternalUIFrame = Instance.new("Frame")
 
 
    MainFrame.Name = "MainFrame"
