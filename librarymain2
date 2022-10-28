@@ -3128,11 +3128,11 @@ end)
       -- ChecklistItemCheck.Position = UDim2.new(0.898372591, 0, 0.0833333358, 0)
       -- ChecklistItemCheck.Size = UDim2.new(0, 28, 0, 20)
       -- ChecklistItemCheck.Image = "rbxassetid://6031068420"
-      -- ChecklistItemCheck.ImageColor3 = Color3.fromRGB(236, 136, 36)
+      -- ChecklistItemCheck.ImageColor3 = Color3.fromRGB(55, 35, 132)
 
       CheckFrame.Name = "CheckFrame"
       CheckFrame.Parent = ChecklistItem
-      CheckFrame.BackgroundColor3 = Color3.fromRGB(236, 136, 36)
+      CheckFrame.BackgroundColor3 = Color3.fromRGB(55, 35, 132)
       CheckFrame.BackgroundTransparency = 1.000
       CheckFrame.Position = UDim2.new(0.900849879, 0, 0.120370373, 0)
       CheckFrame.Size = UDim2.new(0, 22, 0, 20)
@@ -3191,7 +3191,7 @@ end)
             TweenService:Create(
                KeyBoxStroke,
                TweenInfo.new(.3, Enum.EasingStyle.Quad),
-               {Color = Color3.fromRGB(236, 136, 36)}
+               {Color = Color3.fromRGB(55, 35, 132)}
             ):Play()
             
             onlol = true
@@ -3262,7 +3262,7 @@ end)
          -- ChecklistItemCheck.Position = UDim2.new(0.898372591, 0, 0.0833333358, 0)
          -- ChecklistItemCheck.Size = UDim2.new(0, 28, 0, 20)
          -- ChecklistItemCheck.Image = "rbxassetid://6031068420"
-         -- ChecklistItemCheck.ImageColor3 = Color3.fromRGB(236, 136, 36)
+         -- ChecklistItemCheck.ImageColor3 = Color3.fromRGB(55, 35, 132)
    
          CheckFrame.Name = "CheckFrame"
          CheckFrame.Parent = ChecklistItem
@@ -3322,7 +3322,7 @@ end)
                TweenService:Create(
                   KeyBoxStroke,
                   TweenInfo.new(.3, Enum.EasingStyle.Quad),
-                  {Color = Color3.fromRGB(236, 136, 36)}
+                  {Color = Color3.fromRGB(55, 35, 132)}
                ):Play()
                
                onlol = true
@@ -3432,7 +3432,7 @@ end)
          -- ChecklistItemCheck.Position = UDim2.new(0.898372591, 0, 0.0833333358, 0)
          -- ChecklistItemCheck.Size = UDim2.new(0, 28, 0, 20)
          -- ChecklistItemCheck.Image = "rbxassetid://6031068420"
-         -- ChecklistItemCheck.ImageColor3 = Color3.fromRGB(236, 136, 36)
+         -- ChecklistItemCheck.ImageColor3 = Color3.fromRGB(55, 35, 132)
    
          CheckFrame.Name = "CheckFrame"
          CheckFrame.Parent = ChecklistItem
@@ -3492,7 +3492,7 @@ end)
             TweenService:Create(
                KeyBoxStroke,
                TweenInfo.new(.3, Enum.EasingStyle.Quad),
-               {Color = Color3.fromRGB(236, 136, 36)}
+               {Color = Color3.fromRGB(55, 35, 132)}
             ):Play()
             
             onlol = true
@@ -3760,7 +3760,7 @@ function ContainerItems:Colorpicker(text, preset, callback)
    RainbowToggleDotCorner.Name = "RainbowToggleDotCorner"
    RainbowToggleDotCorner.Parent = RainbowToggleDot
 
-   RainbowToggleDotGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(236, 136, 36)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
+   RainbowToggleDotGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(55, 35, 132)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 204, 51))}
    RainbowToggleDotGradient.Name = "RainbowToggleDotGradient"
    RainbowToggleDotGradient.Parent = RainbowToggleDot
 
