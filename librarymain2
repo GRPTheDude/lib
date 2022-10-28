@@ -188,6 +188,7 @@ function Mainholder:Window(hubname, gamename)
    local SettingsButton = Instance.new("TextButton")
    local ImageLabel = Instance.new("ImageLabel")
 
+
    local MainSettingsFrame = Instance.new("Frame")
    local MainSettingsDragFrame = Instance.new("Frame")
    local MainSettingsFrameCorner = Instance.new("UICorner")
@@ -196,6 +197,7 @@ function Mainholder:Window(hubname, gamename)
    local MainSettingsTitle = Instance.new("TextLabel")
    local MainSettingsFrameClose = Instance.new("ImageButton")
 
+   local InternalUIFrame = Instance.new("Frame")
 
 
    MainFrame.Name = "MainFrame"
